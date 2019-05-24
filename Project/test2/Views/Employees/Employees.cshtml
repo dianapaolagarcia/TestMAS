@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EmployeeApp.Model.IEmployeeDTO>
+@{
+    ViewData["Title"] = "Employees";
+}
+@using (Html.BeginForm("EmployeesByID", "Employees", FormMethod.Post, new { id = "miform", enctype = "multipart/form-data" }))
+{
+    <input id="txtID" name="txtID" type="Text" /><input id="Button1" type="Submit" value="button"/>
+    <h1>Employees</h1>
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>contractTypeName</td>
+            <td>roleId</td>
+            <td>roleName</td>
+            <td>roleDescription</td>
+            <td>hourlySalary</td>
+            <td>monthlySalary</td>
+            <td>yearlySalary</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.contractTypeName</td>
+                <td>@item.roleId</td>
+                <td>@item.roleName</td>
+                <td>@item.roleDescription</td>
+                <td>@item.hourlySalary</td>
+                <td>@item.monthlySalary</td>
+                <td>@item.yearlySalary</td>
+            </tr>
+        }
+    </table>
+}
+    <script type="text/javascript">
+
+function fn_search() {
+        var url = "@Url.Action("EmployeesByID", "Employees")";
+        document.location.href = url.toString();
+    }
+
+    </script>
